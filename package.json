@@ -1,7 +1,7 @@
 {
   "name": "avouch",
   "description": "avouch' application generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Arunkumar Palaniappan<hi@lexicalgrammar.dev>",
   "contributors": [
     "Anto Aravinth <anto.aravinth.cse@gmail.com>"
@@ -32,8 +32,7 @@
   "bin": {
     "avouch": "./bin/avouch-cli.js"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "engines": {
     "node": ">= 10.16.0"
   },
@@ -43,6 +42,8 @@
     "template/",
     "README.MD"
   ],
-  "scripts": {
+  "scripts": {},
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
