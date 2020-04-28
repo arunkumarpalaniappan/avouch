@@ -8,9 +8,8 @@ const basename = path.basename(__filename);
 
 const appRoot = require("app-root-path");
 
-const env = process.env.NODE_ENV || "development";
 
-const dbConfig = require(`${appRoot}/config/postgres.json`)[env];
+const dbConfig = require(`${appRoot}/config/postgres.json`);
 const dbOptions = dbConfig.options;
 const db = {};
 let sequelize = null;
