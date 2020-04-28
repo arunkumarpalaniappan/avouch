@@ -2,7 +2,7 @@ const postgresUtils = require("../utils/postgres");
 const verifyUser = (selection, db) =>
   new Promise((resolve, reject) => {
     postgresUtils
-      .findOne(selection, db, "prometheus_user_table")
+      .findOne(selection, db, "avouch_user_table")
       .then(response => resolve(response))
       .catch(error => {
         reject(error);
@@ -11,7 +11,7 @@ const verifyUser = (selection, db) =>
 const createUser = (data, db) =>
   new Promise((resolve, reject) => {
     postgresUtils
-      .insertMany([data], db, "prometheus_user_table")
+      .insertMany([data], db, "avouch_user_table")
       .then(response => {
         resolve({
           ...response,
@@ -23,7 +23,7 @@ const createUser = (data, db) =>
 const updateUser = (selection, data, db) =>
   new Promise((resolve, reject) => {
     postgresUtils
-      .updateRecord(selection, data, db, "prometheus_user_table")
+      .updateRecord(selection, data, db, "avouch_user_table")
       .then(result => {
         resolve({
           ...result,

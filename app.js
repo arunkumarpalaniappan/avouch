@@ -46,7 +46,7 @@ const start = (
 
     app.get(`/`, (req, res) => {
       res.status(200).json({
-        message: "Welcome to prometheus, release 0.0.1"
+        message: "Welcome to avouch, release 0.0.1"
       });
     });
 

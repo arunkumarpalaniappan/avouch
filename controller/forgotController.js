@@ -12,7 +12,7 @@ async function authenticateUser(req, res, next) {
         tenantID
     } = req.body;
     const selection = {
-        account_hash: CryptoJS.SHA256(config.encryptionKey+loginID).toString()
+        account_hash: CryptoJS.SHA256(config.encryptionKey + loginID).toString()
     };
     let authenticateUserResponse = await authenticationModel
         .verifyUser(selection, req.headers.postgres)
@@ -29,26 +29,29 @@ async function authenticateUser(req, res, next) {
             message: "User not found!"
         });
     }
-    if(!authenticateUserResponse[0].authorised_tenants.includes(tenantID)) {
+    if (!authenticateUserResponse[0].authorised_tenants.includes(tenantID)) {
         return res.status(401).json({
             message: "User doesn't have access to the requested tenant"
         });
     }
     const resetToken = {
-        account_reset_token: CryptoJS.SHA256(config.encryptionKey+loginID+moment().utcOffset("+05:30").format()).toString(),
+        account_reset_token: CryptoJS.SHA256(config.encryptionKey + loginID + moment().utcOffset("+05:30").format()).toString(),
         account_reset_dt: moment().utcOffset("+05:30").format()
     };
-    const resetUserResponse = await authenticationModel
-        .updateUser(selection, resetToken , req.headers.postgres)
+    await authenticationModel
+        .updateUser(selection, resetToken, req.headers.postgres)
         .catch(err => {
             const error = err;
             error.status = 500;
             return error;
         });
-    sendResetEmail.sendEmail({...resetToken, loginID});
-        return res.status(200).json({
-            message: "Email with reset password link will be sent to email address, if the address exists!"
-        });
+    sendResetEmail.sendEmail({
+        ...resetToken,
+        loginID
+    });
+    return res.status(200).json({
+        message: "Email with reset password link will be sent to email address, if the address exists!"
+    });
 }
 
 module.exports = authenticateUser;

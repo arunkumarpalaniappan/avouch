@@ -1,4 +1,4 @@
-CREATE TABLE prometheus_user_table (
+CREATE TABLE avouch_user_table (
     user_id BIGSERIAL PRIMARY KEY,
 	first_name VARCHAR(100) not null,
     last_name VARCHAR(100) not null,

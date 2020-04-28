@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('prometheus_user_table', {
+  return sequelize.define('avouch_user_table', {
     user_id: {
       type: DataTypes.BIGINT,
       allowNull: false,
@@ -58,6 +58,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    tableName: 'prometheus_user_table'
+    tableName: 'avouch_user_table'
   });
 };

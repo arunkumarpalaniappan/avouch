@@ -1,9 +1,9 @@
 {
-  "name": "prometheus",
+  "name": "avouch",
   "version": "0.0.1",
   "description": "basic Authentication Module with Node",
   "main": "index.js",
-  "repository": "https://github.com/arunkumarpalaniappan/prometheus",
+  "repository": "https://github.com/arunkumarpalaniappan/avouch",
   "author": "Arunkumar Palaniappan",
   "license": "MIT",
   "dependencies": {
