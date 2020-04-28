@@ -1,4 +1,3 @@
 node_modules
-config/config.json
-config/postgres.json
-_loggerConfig
+package-lock.json
+yarn.lock
