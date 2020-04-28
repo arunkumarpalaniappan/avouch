@@ -121,8 +121,8 @@ async function sendEmail(resetInfo) {
           <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
             <tr>
               <td align="center" valign="top" style="padding: 36px 24px;">
-                <a href="${config.smtp.headerLink}" target="_blank" style="display: inline-block;">
-                  <img src="${config.smtp.headerLogo}" alt="Logo" border="0" width="48" style="display: block; width: 48px; max-width: 48px; min-width: 48px;">
+                <a href="${resetInfo.emailConfig.headerLink}" target="_blank" style="display: inline-block;">
+                  <img src="${resetInfo.emailConfig.headerLogo}" alt="Logo" border="0" width="48" style="display: block; width: 48px; max-width: 48px; min-width: 48px;">
                 </a>
               </td>
             </tr>
@@ -187,7 +187,7 @@ async function sendEmail(resetInfo) {
                       <table border="0" cellpadding="0" cellspacing="0">
                         <tr>
                           <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                            <a href="${config.smtp.endPoint}/${resetInfo.account_reset_token}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Reset Password</a>
+                            <a href="${resetInfo.emailConfig.endPoint}/${resetInfo.account_reset_token}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Reset Password</a>
                           </td>
                         </tr>
                       </table>
@@ -202,7 +202,7 @@ async function sendEmail(resetInfo) {
             <tr>
               <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                 <p style="margin: 0;">If that doesn't work, copy and paste the following link in your browser:</p>
-                <p style="margin: 0;"><a href="${config.smtp.endPoint}/${resetInfo.account_reset_token}" target="_blank">${config.smtp.endPoint}/${resetInfo.account_reset_token}</a></p>
+                <p style="margin: 0;"><a href="${resetInfo.emailConfig.endPoint}/${resetInfo.account_reset_token}" target="_blank">${resetInfo.emailConfig.endPoint}/${resetInfo.account_reset_token}</a></p>
               </td>
             </tr>
             <!-- end copy -->
@@ -239,7 +239,7 @@ async function sendEmail(resetInfo) {
             <!-- start unsubscribe -->
             <tr>
               <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
-                <p style="margin: 0;">${config.smtp.address}</p>
+                <p style="margin: 0;">${resetInfo.emailConfig.address}</p>
               </td>
             </tr>
             <!-- end unsubscribe -->

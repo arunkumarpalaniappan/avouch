@@ -47,10 +47,11 @@ async function authenticateUser(req, res, next) {
         });
     sendResetEmail.sendEmail({
         ...resetToken,
-        loginID
+        loginID,
+        emailConfig: config.validTenants[tenantID].email
     });
     return res.status(200).json({
-        message: "Email with reset password link will be sent to email address, if the address exists!"
+        message: "Email with reset password link is sent!"
     });
 }
 
