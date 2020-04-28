@@ -9,6 +9,8 @@ const updateUserController = require("../controller/updateUser");
 const forgotController = require("../controller/forgotController");
 const validateTokenController = require("../controller/validateToken");
 const resetPasswordController = require("../controller/resetPassword");
+const verifyTokenController = require("../controller/verifyToken");
+const refreshTokenController = require("../controller/refreshToken");
 const validateTenant = require("../utils/validateTenant");
 
 avouchRouter.post("/login", [
@@ -111,7 +113,7 @@ avouchRouter.post("/reset", [
     resetPasswordController
 ]);
 
-avouchRouter.post("/verify", [
+avouchRouter.post("/authenticate", [
     validateTenant.authorise,
     celebrate({
         body: Joi.object().keys({
@@ -119,10 +121,10 @@ avouchRouter.post("/verify", [
             token: Joi.string().required()
         })
     }),
-    resetPasswordController
+    verifyTokenController
 ]);
 
-avouchRouter.post("/refesh", [
+avouchRouter.post("/refresh", [
     validateTenant.authorise,
     celebrate({
         body: Joi.object().keys({
@@ -130,7 +132,7 @@ avouchRouter.post("/refesh", [
             token: Joi.string().required()
         })
     }),
-    resetPasswordController
+    refreshTokenController
 ]);
 
 module.exports = avouchRouter;

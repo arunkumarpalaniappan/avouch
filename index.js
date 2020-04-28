@@ -1,6 +1,7 @@
 const app = require("./app");
+const pjson = require('./package.json');
 
-const SERVICE_NAME = "NeOHoS";
+const SERVICE_NAME = pjson.name;
 const LOG_DIR = "../../logDir";
 const { EventEmitter } = require("events");
 const connections = require("./connections/index.js");

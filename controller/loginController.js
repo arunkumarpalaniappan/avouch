@@ -3,6 +3,7 @@ const jsonwebtoken = require("jsonwebtoken");
 const CryptoJS = require("crypto-js");
 
 const config = require("../config").appConfig;
+const pjson = require("../package.json");
 
 const authenticationModel = require("../models/authentication");
 
@@ -45,9 +46,10 @@ async function authenticateUser(req, res, next) {
         {
           sub: decrypt(authenticateUserResponse[0].email),
           roles: [authenticateUserResponse[0].account_details.userType],
-          "aud": tenantID,
+          aud: tenantID,
+          iss: `${pjson.name}-v${pjson.version}-tenant-${tenantID}`,
           exp: moment()
-            .add(1, "hour")
+            .add(config.tokenExpiry, "second")
             .unix()
         },
         config.jwtKey,

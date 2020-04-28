@@ -41,7 +41,7 @@ async function resetPassword(req, res, next) {
     const {
         account_reset_dt
     } = resetPasswordResponse;
-    if (moment().utcOffset("+05:30").unix() - moment(account_reset_dt).utcOffset("+05:30").unix() > 3600) {
+    if (moment().utcOffset("+05:30").unix() - moment(account_reset_dt).utcOffset("+05:30").unix() > config.tokenExpiry) {
         return res.status(401).json({
             message: "Token Expired"
         });

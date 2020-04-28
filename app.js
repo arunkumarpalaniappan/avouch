@@ -10,6 +10,7 @@ const BodyParser = require("body-parser");
 const { isCelebrate } = require("celebrate");
 const http = require("http");
 
+const pjson = require('./package.json');
 
 const start = (
   options,
@@ -46,13 +47,13 @@ const start = (
 
     app.get(`/`, (req, res) => {
       res.status(200).json({
-        message: "Welcome to avouch, release 0.0.1"
+        message: `Welcome to ${pjson.name}, release ${pjson.version}`
       });
     });
 
     // route for ping for status monitoring services
     app.get(`/ping`, (req, res) => {
-      res.status(200).json({ message: `Hello World from the data team` });
+      res.status(200).json({ message: `Hello World` });
     });
 
     app.get(`/test`, (req, res) => {
