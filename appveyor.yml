@@ -1,7 +1,8 @@
 environment:
   matrix:
-    - nodejs_version: "10.16.0"
-    - nodejs_version: "12.9.0"
+    - nodejs_version: "10.20.1"
+    - nodejs_version: "11.15.0"
+    - nodejs_version: "12.16.3"
     - nodejs_version: "13.13.0"
     - nodejs_version: "14.0.0"
 cache:

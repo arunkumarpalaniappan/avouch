@@ -1,6 +1,7 @@
 
 [Avouch](https://github.com/arunkumarpalaniappan/avouch), Complete Out of the Box Authentication server using Express
 
+[![Node Version][node-badge]][npm-url]
 [![NPM Version][npm-image]][npm-url]
 [![Linux Build][travis-image]][travis-url]
 [![Windows Build][appveyor-image]][appveyor-url]
@@ -361,6 +362,7 @@ Here is how you can contribute to avouch:
 
 [MIT](LICENSE)
 
+[node-badge]: https://img.shields.io/node/v/avouch.svg
 [npm-image]: https://img.shields.io/npm/v/avouch.svg
 [npm-url]: https://npmjs.org/package/avouch
 [travis-image]: https://img.shields.io/travis/arunkumarpalaniappan/avouch/master.svg?label=linux
