@@ -1,7 +1,7 @@
 {
   "name": "avouch",
   "description": "avouch' application generator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Arunkumar Palaniappan<hi@lexicalgrammar.dev>",
   "contributors": [
     "Anto Aravinth <anto.aravinth.cse@gmail.com>",
