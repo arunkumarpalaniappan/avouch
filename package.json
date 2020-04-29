@@ -1,10 +1,11 @@
 {
   "name": "avouch",
   "description": "avouch' application generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Arunkumar Palaniappan<hi@lexicalgrammar.dev>",
   "contributors": [
-    "Anto Aravinth <anto.aravinth.cse@gmail.com>"
+    "Anto Aravinth <anto.aravinth.cse@gmail.com>",
+    "Murali GS <gsmuralee@gmail.com>"
   ],
   "keywords": [
     "express",
@@ -40,10 +41,8 @@
     "LICENSE",
     "bin/",
     "template/",
+    "postman/",
     "README.MD"
   ],
-  "scripts": {},
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  }
+  "scripts": {}
 }

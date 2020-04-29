@@ -107,6 +107,7 @@ function createApplication(name, dir) {
     fs.writeFileSync(dir+'/package.json', JSON.stringify(packageJson));
     copyTemplateMulti('.', dir + '', '*.gitignore')
     copyTemplateMulti('.', dir + '', '*.js')
+    copyTemplateMulti('.', dir + '', '*.MD')
     mkdir(dir, '/config');
     copyTemplateMulti('config', dir + '/config', '*.json')
     copyTemplateMulti('config', dir + '/config', '*.js')
@@ -136,8 +137,13 @@ function createApplication(name, dir) {
     console.log('   install dependencies:')
     console.log('     %s npm install', prompt)
     console.log()
+    console.log('  run the ddl script in postgres server before updating the config ')
+    console.log('  DDL Location:: https://github.com/arunkumarpalaniappan/avouch/blob/master/template/ddl.sql')
+    console.log()
+    console.log('  Postman collection for API :: https://github.com/arunkumarpalaniappan/avouch/blob/master/postman/collection.json')
+    console.log()
     console.log('  update config:')
-    console.log('  to update the config, read the documentation provided at https://github.com/arunkumarpalaniappan/avouch/blob/master/README.MD')
+    console.log('  to update the config, read the documentation provided at https://github.com/arunkumarpalaniappan/avouch/blob/master/README.MD#update-config')
     console.log()
     console.log('   run the app:')
 
