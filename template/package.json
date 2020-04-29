@@ -29,5 +29,8 @@
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.7",
     "uuid": "^7.0.3"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
 }

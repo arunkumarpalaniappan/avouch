@@ -1,5 +1,5 @@
 
-[Avouch](https://github.com/arunkumarpalaniappan/avouch), Simple bootstrap for Complete Login Server with Express.JS
+[Avouch](https://github.com/arunkumarpalaniappan/avouch), Complete Out of the Box Authentication server using Express
 
 [![NPM Version][npm-image]][npm-url]
 
