@@ -5,6 +5,7 @@
 [![NPM Version][npm-image]][npm-url]
 [![Linux Build][travis-image]][travis-url]
 [![Windows Build][appveyor-image]][appveyor-url]
+[![Node.js CI][github-actions-image]][npm-url]
 
 | Currently Supported DB        |   
 |-----------------|
@@ -369,3 +370,4 @@ Here is how you can contribute to avouch:
 [travis-url]: https://travis-ci.org/arunkumarpalaniappan/avouch
 [appveyor-image]: https://img.shields.io/appveyor/build/arunkumarpalaniappan/avouch/master.svg?label=windows
 [appveyor-url]: https://ci.appveyor.com/project/arunkumarpalaniappan/avouch
+[github-actions-image]: https://github.com/arunkumarpalaniappan/avouch/workflows/Node.js%20CI/badge.svg
