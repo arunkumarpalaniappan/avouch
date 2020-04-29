@@ -1,11 +1,13 @@
+const { EventEmitter } = require("events");
+
 const app = require("./app");
-const pjson = require('./package.json');
+const pjson = require("./package.json");
 
 const SERVICE_NAME = pjson.name;
 const LOG_DIR = "../../logDir";
-const { EventEmitter } = require("events");
 const connections = require("./connections/index.js");
 
+// eslint-disable-next-line import/order
 const common = require("logger-common")(SERVICE_NAME, LOG_DIR);
 
 const mediator = new EventEmitter();
@@ -14,15 +16,12 @@ const obj = {
   // should be configured in env folder
   port: process.env.PORT || "4001",
   logger: common.logger,
-  middlewares: common.middlewares
+  middlewares: common.middlewares,
 };
 
 mediator.on("start-boot", connObj => {
   app
-    .start(
-      obj,
-      connObj.postgres
-    )
+    .start(obj, connObj.postgres)
     // eslint-disable-next-line no-unused-vars
     .then(server => {
       common.logger.appLogger.info(`${SERVICE_NAME}:${obj.port} started`);
@@ -36,12 +35,10 @@ mediator.on("start-boot", connObj => {
     });
 });
 // connect to db and then emit start boot event
-Promise.all([
-  connections.postgres.connectToDb()
-])
+Promise.all([connections.postgres.connectToDb()])
   .then(connectionObject => {
     mediator.emit("start-boot", {
-      postgres: connectionObject[0]
+      postgres: connectionObject[0],
     });
   })
   .catch(err => {

@@ -2,20 +2,17 @@
 /* eslint-disable no-sync */
 const express = require("express");
 const helmet = require("helmet");
-const noCache = require('nocache')
+const noCache = require("nocache");
 const morgan = require("morgan");
-const routes = require("./routes");
 const cors = require("cors");
 const BodyParser = require("body-parser");
 const { isCelebrate } = require("celebrate");
 const http = require("http");
+const routes = require("./routes");
 
-const pjson = require('./package.json');
+const pjson = require("./package.json");
 
-const start = (
-  options,
-  postgres
-) =>
+const start = (options, postgres) =>
   // eslint-disable-next-line consistent-return
   new Promise((resolve, reject) => {
     if (!postgres) {
@@ -35,11 +32,10 @@ const start = (
     app.use(options.middlewares.setCorrelationId());
     options.logger.appLogger.info("setCorelationId Middleware");
 
-
     // attach morgan for http logger after setting the corelation id only
     app.use(
       morgan(options.logger.morganLogger.format, {
-        stream: options.logger.morganLogger.stream
+        stream: options.logger.morganLogger.stream,
       })
     );
     // parse the json body
@@ -47,7 +43,7 @@ const start = (
 
     app.get(`/`, (req, res) => {
       res.status(200).json({
-        message: `Welcome to ${pjson.name}, release ${pjson.version}`
+        message: `Welcome to ${pjson.name}, release ${pjson.version}`,
       });
     });
 
@@ -64,10 +60,9 @@ const start = (
     });
 
     app.get(`/ip`, (req, res) => {
-      let ip =
-        req.headers.HTTP_X_FORWARDED_FOR ||
-        req.headers["x-forwarded-for"] ||
-        req.connection.remoteAddress;
+      let ip =        req.headers.HTTP_X_FORWARDED_FOR
+        || req.headers["x-forwarded-for"]
+        || req.connection.remoteAddress;
       ip = ip.trim();
       if (ip.toLowerCase().startsWith("::ffff:")) {
         ip = ip.substring("::ffff:".length);
@@ -80,13 +75,12 @@ const start = (
 
     // attaching db object to the req headers.
     app.use((req, res, next) => {
-        req.logger = options.logger;
-        req.headers.postgres = postgres;
-        next();
-      }
-    );
+      req.logger = options.logger;
+      req.headers.postgres = postgres;
+      next();
+    });
     app.use(routes);
-    
+
     // app.use(errors());
 
     // catch 404 and forward to error handler
@@ -97,32 +91,34 @@ const start = (
     });
 
     // final all error handler
-    app.use((err, req, res, next) => {
+    app.use((err, req, res) => {
       options.logger.httpLogger.error(req, {
         message: err.message,
-        error: err
+        error: err,
       });
       if (isCelebrate(err)) {
         if (err.joi && err.joi.details) {
-          const error = err.joi.details.map(er => er.message.replace(/"/g, ""));
+          const error = err.joi.details.map(er =>
+            er.message.replace(/"/g, "")
+          );
           return res
             .status(422)
             .json({ error: error[0], correlationId: req.x_correlation_id });
-        } else {
-          return  res.status(422).json({ ...err, correlationId: req.x_correlation_id });
         }
-      } else {
-        const statusCode = err.status || 500;
-        const message = {};
-        message.message = err.message;
-        message.error = "Internal Server Error";
         return res
-          .status(statusCode)
-          .json({ ...message, correlationId: req.x_correlation_id });
+          .status(422)
+          .json({ ...err, correlationId: req.x_correlation_id });
       }
+      const statusCode = err.status || 500;
+      const message = {};
+      message.message = err.message;
+      message.error = "Internal Server Error";
+      return res
+        .status(statusCode)
+        .json({ ...message, correlationId: req.x_correlation_id });
     });
 
     const server = httpServer.listen(options.port, () => resolve(server));
   });
 
-module.exports = Object.assign({}, { start });
+module.exports = { start };

@@ -1,4 +1,5 @@
 const postgresUtils = require("../utils/postgres");
+
 const verifyUser = (selection, db) =>
   new Promise((resolve, reject) => {
     postgresUtils
@@ -15,7 +16,7 @@ const createUser = (data, db) =>
       .then(response => {
         resolve({
           ...response,
-          type: 200
+          type: 200,
         });
       })
       .catch(error => reject(error));
@@ -27,7 +28,7 @@ const updateUser = (selection, data, db) =>
       .then(result => {
         resolve({
           ...result,
-          type: 200
+          type: 200,
         });
       })
       .catch(error => {
@@ -35,9 +36,8 @@ const updateUser = (selection, data, db) =>
       });
   });
 
-
-module.exports = Object.assign({}, {
+module.exports = {
   verifyUser,
   createUser,
-  updateUser
-});
+  updateUser,
+};

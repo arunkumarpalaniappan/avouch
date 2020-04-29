@@ -106,6 +106,7 @@ function createApplication (name, dir) {
   copyTemplateMulti('.', dir + '', '*.gitignore')
   copyTemplateMulti('.', dir + '', '*.js')
   copyTemplateMulti('.', dir + '', '*.MD')
+  copyTemplateMulti('.', dir + '', 'LICENSE')
   mkdir(dir, '/config')
   copyTemplateMulti('config', dir + '/config', '*.json')
   copyTemplateMulti('config', dir + '/config', '*.js')

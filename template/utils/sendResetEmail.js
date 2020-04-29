@@ -1,9 +1,9 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 const config = require(`../config`).appConfig;
 
 async function sendEmail(resetInfo) {
-    const resetPasswordTemplate = `<!DOCTYPE html>
+  const resetPasswordTemplate = `<!DOCTYPE html>
   <html>
   <head>
     <meta charset="utf-8">
@@ -260,34 +260,33 @@ async function sendEmail(resetInfo) {
   </body>
   </html>`;
 
-    const transporter = nodemailer.createTransport({
-        service: config.smtp.service,
-        auth: {
-            user: config.smtp.username,
-            pass: config.smtp.password
-        }
-    });
-    const mailOptions = {
-        from: 'bpclbot@thedatateam.in',
-        to: resetInfo.loginID,
-        subject: 'Reset your account password',
-        html: resetPasswordTemplate
+  const transporter = nodemailer.createTransport({
+    service: config.smtp.service,
+    auth: {
+      user: config.smtp.username,
+      pass: config.smtp.password,
+    },
+  });
+  const mailOptions = {
+    from: "bpclbot@thedatateam.in",
+    to: resetInfo.loginID,
+    subject: "Reset your account password",
+    html: resetPasswordTemplate,
+  };
+  await transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return {
+        type: 500,
+        error,
+      };
+    }
+    return {
+      type: 200,
+      response: info.response,
     };
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            return {
-                type: 500,
-                error
-            };
-        } else {
-            return {
-                type: 200,
-                response: info.response
-            };
-        }
-    });
+  });
 }
 
-module.exports = Object.assign({}, {
-    sendEmail
-});
+module.exports = {
+  sendEmail,
+};

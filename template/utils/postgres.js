@@ -6,7 +6,7 @@ const findAll = (selectionCriteria, projection, db, collection) =>
       .findAll({
         offset: projection.offset ? projection.offset : 0,
         limit: projection.limit ? projection.limit : 10,
-        where: selectionCriteria
+        where: selectionCriteria,
       })
       .then(res => resolve(res.map(rs => rs.dataValues)))
       .catch(err => reject(err));
@@ -15,7 +15,7 @@ const findOne = (selectionCriteria, db, collection) =>
   new Promise((resolve, reject) => {
     db[collection]
       .findAll({
-        where: selectionCriteria
+        where: selectionCriteria,
       })
       .then(res => resolve(res.map(rs => rs.dataValues)))
       .catch(err => reject(err));
@@ -52,14 +52,11 @@ const findbyQuery = (query, sequelize) =>
         reject(error);
       });
   });
-module.exports = Object.assign(
-  {},
-  {
-    findAll,
-    findOne,
-    updateRecord,
-    findbyQuery,
-    insertMany,
-    insertOne
-  }
-);
+module.exports = {
+  findAll,
+  findOne,
+  updateRecord,
+  findbyQuery,
+  insertMany,
+  insertOne,
+};
