@@ -101,7 +101,7 @@ Click here to see list of all [Supported SMTP Services]( #supported-smtp-service
 
 After updating `config.json`, you have to update ```/config/postgres.json``` to establish db connection.
 
-DDL Script available at [DDL](https://github.com/arunkumarpalaniappan/avouch/blob/master/template/ddl.sql) Script, after creating the table in Postgres, you can update the following config.
+DDL Script available at [DDL](https://github.com/arunkumarpalaniappan/avouch/blob/master/template/utils/ddl.sql) Script, after creating the table in Postgres, you can update the following config.
 
 You can read more about [Sequelize](https://sequelize.org/master/manual/migrations.html) syntax.
 
