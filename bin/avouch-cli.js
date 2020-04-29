@@ -138,7 +138,7 @@ function createApplication(name, dir) {
     console.log('     %s npm install', prompt)
     console.log()
     console.log('  run the ddl script in postgres server before updating the config ')
-    console.log('  DDL Location:: https://github.com/arunkumarpalaniappan/avouch/blob/master/template/ddl.sql')
+    console.log('  DDL Location:: https://github.com/arunkumarpalaniappan/avouch/blob/master/template/utils/ddl.sql')
     console.log()
     console.log('  Postman collection for API :: https://github.com/arunkumarpalaniappan/avouch/blob/master/postman/collection.json')
     console.log()
